@@ -1,0 +1,42 @@
+/**
+        Author: TanDV7 - tandv7@outlook.com
+        Last modified: 2017-05-22 14:37:06
+        Filename: App.css
+        Description: Created by TanDV7 using vim automatically.
+**/
+.app {
+  flex: 1;
+  justify-content: center;
+  align-items: center;
+}
+
+.appHeader {
+  background-color: #222;
+  height: 160;
+  padding: 40;
+}
+
+.appBanner, .appIntro {
+  text-align: center;
+}
+
+.appBanner {
+  font-size: 80;
+  color: black;
+}
+
+.appIntro {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  margin-top: 40;
+  font-size: 40;
+  line-height: 60;
+}
+
+.textInput{
+  width:500;
+  height:100;
+  font-size:20;
+}
