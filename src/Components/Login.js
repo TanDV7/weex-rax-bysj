@@ -1,17 +1,14 @@
 /**
         Author: TanDV7 - tandv7@outlook.com
-        Last modified: 2017-05-27 09:44:26
-        Filename: Login.js
+        Last modified: 2017-05-27 15:26:06
+        Filename: src/Components/Login.js
         Description: Created by TanDV7 using vim automatically.
 **/
 import React, { Component } from 'react';
 import {
   View, Button, Text, TextInput, ToastAndroid
 } from 'react-native';
-import { doPost } from '../Utils';
-
-// import styles from '../Styles/index.css';
-const styles = {};
+import { doPost, setBackHandler } from '../Utils';
 
 class Login extends Component {
   constructor(props) {
@@ -20,6 +17,9 @@ class Login extends Component {
       userId: '',
       password: ''
     };
+  }
+  componentDidMount() {
+    setBackHandler(this.props.history);
   }
   doLogin(ev) {
     if (this.state.userId === '') {
@@ -31,7 +31,7 @@ class Login extends Component {
         if (json.user_password === this.state.password) {
           this.props.setUserId(this.state.userId);
           ToastAndroid.show('登录成功', ToastAndroid.LONG);
-          this.props.toMain(ev);
+          this.props.history.replace('/main');
         } else if (json.errno) {
           ToastAndroid.show('密码错误', ToastAndroid.SHORT);
         }
@@ -41,26 +41,23 @@ class Login extends Component {
   render() {
     return (
       <View>
-        <Text style={styles.appBanner}>居家养老平台</Text>
+        <Text >居家养老平台</Text>
         <TextInput
           value={this.state.userId}
-          onChangeText={ev => this.setState({ userId: ev })}
-          placeholder='请输入账号'
-          style={styles.textInput} />
+          onChangeText={txt => this.setState({ userId: txt })}
+          placeholder='请输入账号' />
         <TextInput
           secureTextEntry
           value={this.state.password}
-          onChangeText={ev => this.setState({ password: ev })}
-          placeholder='请输入密码'
-          style={styles.textInput} />
-        <View
-          style={styles.appIntro}>
+          onChangeText={txt => this.setState({ password: txt })}
+          placeholder='请输入密码' />
+        <View>
           <Button
             title='登陆'
             onPress={ev => this.doLogin(ev)} />
           <Button
             title='注册'
-            onPress={ev => this.props.toRegister(ev)} />
+            onPress={ev => this.props.history.push('/register')} />
         </View>
       </View>
     );

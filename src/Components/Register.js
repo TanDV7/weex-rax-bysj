@@ -1,19 +1,15 @@
 /**
         Author: TanDV7 - tandv7@outlook.com
-        Last modified: 2017-05-27 09:39:48
+        Last modified: 2017-05-27 15:10:30
         Filename: Register.js
         Description: Created by TanDV7 using vim automatically.
 **/
-
 import React, { Component } from 'react';
 import {
   Button, View, Text, TextInput, ToastAndroid
 } from 'react-native';
-// import styles from '../Styles/index.css';
 
 import { doPost } from '../Utils';
-
-const styles = {};
 
 class Register extends Component {
   constructor(props) {
@@ -39,38 +35,35 @@ class Register extends Component {
           ToastAndroid.show('用户已存在', ToastAndroid.SHORT);
         } else {
           ToastAndroid.show('注册并登录成功', ToastAndroid.SHORT);
-          this.props.toMain(ev);
+          this.props.history.replace('/main');
         }
       });
     }
   }
   render() {
     return (
-      <View style={styles.app}>
-        <Text style={styles.appBanner}>注册</Text>
-        <View style={styles.appBanner}>
+      <View >
+        <Text >注册</Text>
+        <View >
           <TextInput
             value={this.state.userId}
-            onInput={ev => this.setState({ userId: ev.value })}
-            keyboardType='default'
-            placeholder='请输入账号'
-            style={styles.textInput} />
+            onChangeText={txt => this.setState({ userId: txt })}
+            placeholder='请输入账号' />
           <TextInput
+            secureTextEntry
             value={this.state.password}
-            onInput={ev => this.setState({ password: ev.value })}
-            keyboardType='default'
+            onChangeText={txt => this.setState({ passwod: txt })}
             password='true'
-            placeholder='请输入密码'
-            style={styles.textInput} />
+            placeholder='请输入密码' />
           <TextInput
+            secureTextEntry
             value={this.state.rptPassword}
-            onInput={ev => this.setState({ rptPassword: ev.value })}
-            keyboardType='default'
+            onChangeText={txt => this.setState({ rptPassword: txt })}
             password='true'
-            placeholder='再次输入密码'
-            style={styles.textInput} />
+            placeholder='再次输入密码' />
           <Button
-            onPress={ev => this.doRegister(ev)}>注册并登录</Button>
+            title='注册并登录'
+            onPress={ev => this.doRegister(ev)} />
         </View>
       </View>
     );
