@@ -1,16 +1,16 @@
 /**
         Author: TanDV7 - tandv7@outlook.com
-        Last modified: 2017-05-26 19:09:58
-        Filename: src/Components/Medical.js
+        Last modified: 2017-05-27 09:39:10
+        Filename: Medical.js
         Description: Created by TanDV7 using vim automatically.
 **/
 
-/* eslint-disable */
-import { Component, createElement } from 'rax';
-/* eslint-enable */
-import View from 'rax-view';
-import Text from 'rax-text';
-import styles from '../Styles/index.css';
+import React from 'react';
+import {
+  View, Text
+} from 'react-native';
+// import styles from '../Styles/index.css';
+const styles = {};
 
 function Medical() {
   return (

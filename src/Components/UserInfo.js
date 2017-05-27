@@ -1,18 +1,19 @@
 /**
         Author: TanDV7 - tandv7@outlook.com
-        Last modified: 2017-05-26 19:13:27
-        Filename: src/Components/UserInfo.js
+        Last modified: 2017-05-27 09:42:28
+        Filename: UserInfo.js
         Description: Created by TanDV7 using vim automatically.
 **/
 
-/* eslint-disable */
-import { Component, createElement } from 'rax';
-/* eslint-enable */
-import View from 'rax-view';
-import Text from 'rax-text';
-import styles from '../Styles/index.css';
-
+import React, { Component } from 'react';
+import {
+  View, Text
+} from 'react-native';
+// import styles from '../Styles/index.css';
 import { doPost } from '../Utils';
+
+const styles = {};
+
 
 class UserInfo extends Component {
   constructor(props) {

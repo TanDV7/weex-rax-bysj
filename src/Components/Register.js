@@ -1,21 +1,19 @@
 /**
         Author: TanDV7 - tandv7@outlook.com
-        Last modified: 2017-05-26 19:11:05
-        Filename: src/Components/Register.js
+        Last modified: 2017-05-27 09:39:48
+        Filename: Register.js
         Description: Created by TanDV7 using vim automatically.
 **/
 
-/* eslint-disable */
-import { Component, createElement } from 'rax';
-/* eslint-enable */
-import View from 'rax-view';
-import Text from 'rax-text';
-import Button from 'rax-button';
-import TextInput from 'rax-textinput';
-import Toast from 'universal-toast';
-import styles from '../Styles/index.css';
+import React, { Component } from 'react';
+import {
+  Button, View, Text, TextInput, ToastAndroid
+} from 'react-native';
+// import styles from '../Styles/index.css';
 
 import { doPost } from '../Utils';
+
+const styles = {};
 
 class Register extends Component {
   constructor(props) {
@@ -30,17 +28,17 @@ class Register extends Component {
     const sql = `insert into users(user_Id,user_password) 
                     values('${this.state.userId}','${this.state.password}')`;
     if (this.state.user === '') {
-      Toast.show('请输入账号', Toast.SHORT);
+      ToastAndroid.show('请输入账号', ToastAndroid.SHORT);
     } else if (this.state.password === '') {
-      Toast.show('请输入密码', Toast.SHORT);
+      ToastAndroid.show('请输入密码', ToastAndroid.SHORT);
     } else if (this.state.rptPassword !== this.state.password) {
-      Toast.show('请保证两次密码一致', Toast.SHORT);
+      ToastAndroid.show('请保证两次密码一致', ToastAndroid.SHORT);
     } else {
       doPost(sql, (json) => {
         if (json.errno) {
-          Toast.show('用户已存在', Toast.SHORT);
+          ToastAndroid.show('用户已存在', ToastAndroid.SHORT);
         } else {
-          Toast.show('注册并登录成功', Toast.SHORT);
+          ToastAndroid.show('注册并登录成功', ToastAndroid.SHORT);
           this.props.toMain(ev);
         }
       });

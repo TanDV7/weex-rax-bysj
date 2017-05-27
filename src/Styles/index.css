@@ -1,7 +1,7 @@
 /**
         Author: TanDV7 - tandv7@outlook.com
-        Last modified: 2017-05-22 14:37:06
-        Filename: App.css
+        Last modified: 2017-05-26 19:43:15
+        Filename: index.css
         Description: Created by TanDV7 using vim automatically.
 **/
 .app {

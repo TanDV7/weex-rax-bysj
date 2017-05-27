@@ -1,31 +1,32 @@
 {
-  "name": "test",
-  "author": "rax",
-  "version": "0.0.0",
+  "name": "bysj",
+  "version": "0.0.1",
+  "private": true,
   "scripts": {
-    "npminit": "npm install --registry=https://registry.npm.taobao.org",
-    "check": "find src | grep \\.js | xargs eslint",
-    "start": "rax-scripts start",
-    "build": "rax-scripts build",
-    "lint": "eslint --ext .js --ext .jsx ./src"
+    "dev": "react-native run-android",
+    "init": "npm install --registry=https://registry.npm.taobao.org",
+    "start": "node node_modules/react-native/local-cli/cli.js start",
+    "test": "jest"
   },
   "dependencies": {
-    "rax": "^0.3.5",
-    "rax-button": "^0.3.3",
-    "rax-grid": "^0.3.4",
-    "rax-text": "^0.3.5",
-    "rax-textinput": "^0.3.4",
-    "rax-view": "^0.3.5",
-    "universal-toast": "^0.3.5"
+    "react": "16.0.0-alpha.6",
+    "react-native": "0.44.2",
+    "react-native-elements": "^0.12.2",
+    "react-native-vector-icons": "^4.1.1"
   },
   "devDependencies": {
-    "rax-scripts": "^0.1.0",
+    "babel-jest": "20.0.3",
+    "babel-preset-react-native": "1.9.2",
+    "jest": "20.0.4",
+    "react-test-renderer": "16.0.0-alpha.6",
     "babel-eslint": "^7.2.3",
-    "eslint": "^3.19.0",
+    "eslint": "^3.10.0",
     "eslint-config-airbnb": "^14.1.0",
     "eslint-plugin-import": "^2.2.0",
     "eslint-plugin-jsx-a11y": "^4.0.0",
-    "eslint-plugin-react": "^6.10.3",
-    "eslint": "^3.10.0"
+    "eslint-plugin-react": "^6.10.3"
+  },
+  "jest": {
+    "preset": "react-native"
   }
 }

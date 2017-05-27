@@ -1,20 +1,21 @@
 /**
         Author: TanDV7 - tandv7@outlook.com
-        Last modified: 2017-05-26 19:05:57
+        Last modified: 2017-05-27 09:43:28
         Filename: App.js
         Description: Created by TanDV7 using vim automatically.
 **/
-/* eslint-disable */
-import { Component, createElement } from 'rax';
-/* eslint-enable */
-import View from 'rax-view';
+import React, { Component } from 'react';
+import {
+  View
+} from 'react-native';
 import Register from '../Components/Register';
 import Login from '../Components/Login';
 import Main from '../Components/Main';
 import Medical from '../Components/Medical';
 import UserInfo from '../Components/UserInfo';
 import Service from '../Components/Service';
-import styles from '../Styles/index.css';
+// import styles from '../Styles/index.css';
+const styles = {};
 
 class App extends Component {
   constructor(props) {
@@ -84,10 +85,36 @@ class App extends Component {
       default:
         break;
     }
+    /*
+    const items = [
+      {
+        title: 'Login',
+        selected: (this.state.name === 'Main'),
+        onPress: ev => this.setState({ name: 'Login' })
+      },
+      {
+        title: 'Register',
+        selected: (this.state.name === 'Register'),
+        onPress: ev => this.setState({ name: 'Register' })
+      },
+      {
+        title: 'Main',
+        selected: (this.state.name === 'Main'),
+        onPress: ev => this.setState({ name: 'Main' })
+      },
+      {
+        title: 'About',
+        selected: (this.state.name === 'About'),
+        onPress: ev => this.setState({ name: 'About' })
+      }
+    ];
+    */
     return (
+      // <DoskTabBar items={items}>
       <View style={styles.app}>
         {child}
       </View>
+      // </DoskTabBar>
     );
   }
 }
