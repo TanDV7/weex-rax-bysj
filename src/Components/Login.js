@@ -1,14 +1,14 @@
 /**
         Author: TanDV7 - tandv7@outlook.com
-        Last modified: 2017-05-27 15:26:06
-        Filename: src/Components/Login.js
+        Last modified: 2017-05-27 18:24:44
+        Filename: Login.js
         Description: Created by TanDV7 using vim automatically.
 **/
 import React, { Component } from 'react';
 import {
   View, Button, Text, TextInput, ToastAndroid
 } from 'react-native';
-import { doPost, setBackHandler } from '../Utils';
+import { doPost } from '../Utils';
 
 class Login extends Component {
   constructor(props) {
@@ -17,9 +17,6 @@ class Login extends Component {
       userId: '',
       password: ''
     };
-  }
-  componentDidMount() {
-    setBackHandler(this.props.history);
   }
   doLogin(ev) {
     if (this.state.userId === '') {
