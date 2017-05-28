@@ -1,42 +1,13 @@
 /**
         Author: TanDV7 - tandv7@outlook.com
-        Last modified: 2017-05-26 19:43:15
-        Filename: index.css
+        Last modified: 2017-05-29 00:11:47
+        Filename: index.js
         Description: Created by TanDV7 using vim automatically.
 **/
-.app {
-  flex: 1;
-  justify-content: center;
-  align-items: center;
-}
+import { StyleSheet } from 'react-native';
 
-.appHeader {
-  background-color: #222;
-  height: 160;
-  padding: 40;
-}
-
-.appBanner, .appIntro {
-  text-align: center;
-}
-
-.appBanner {
-  font-size: 80;
-  color: black;
-}
-
-.appIntro {
-  display: flex;
-  flex-direction: row;
-  justify-content: center;
-  align-items: center;
-  margin-top: 40;
-  font-size: 40;
-  line-height: 60;
-}
-
-.textInput{
-  width:500;
-  height:100;
-  font-size:20;
-}
+export default StyleSheet.create({
+  blankBorder: {
+    margin: 10
+  }
+});

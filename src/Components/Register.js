@@ -1,7 +1,7 @@
 /**
         Author: TanDV7 - tandv7@outlook.com
-        Last modified: 2017-05-27 15:10:30
-        Filename: Register.js
+        Last modified: 2017-05-29 00:27:55
+        Filename: Components/Register.js
         Description: Created by TanDV7 using vim automatically.
 **/
 import React, { Component } from 'react';
@@ -20,7 +20,7 @@ class Register extends Component {
       rptPassword: ''
     };
   }
-  doRegister(ev) {
+  async doRegister(ev) {
     const sql = `insert into users(user_Id,user_password) 
                     values('${this.state.userId}','${this.state.password}')`;
     if (this.state.user === '') {
@@ -30,14 +30,17 @@ class Register extends Component {
     } else if (this.state.rptPassword !== this.state.password) {
       ToastAndroid.show('请保证两次密码一致', ToastAndroid.SHORT);
     } else {
-      doPost(sql, (json) => {
+      try {
+        const json = await doPost(sql);
         if (json.errno) {
           ToastAndroid.show('用户已存在', ToastAndroid.SHORT);
         } else {
           ToastAndroid.show('注册并登录成功', ToastAndroid.SHORT);
-          this.props.history.replace('/main');
+          this.props.history.push('/main');
         }
-      });
+      } catch (err) {
+        // TODO: 错误处理
+      }
     }
   }
   render() {

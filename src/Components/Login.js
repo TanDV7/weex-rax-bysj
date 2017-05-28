@@ -1,16 +1,15 @@
 /**
         Author: TanDV7 - tandv7@outlook.com
-        Last modified: 2017-05-28 10:02:52
-        Filename: Login.js
+        Last modified: 2017-05-28 23:28:02
+        Filename: src/Components/Login.js
         Description: Created by TanDV7 using vim automatically.
 **/
 import React, { Component } from 'react';
-import {
-  View, Button, Text, TextInput, ToastAndroid
-} from 'react-native';
+import { Modal, Flex, Card, Button, InputItem } from 'antd-mobile';
 import { observer } from 'mobx-react';
 
 import Model from '../Model';
+import Style from '../Styles';
 import { doPost } from '../Utils';
 
 @observer
@@ -22,45 +21,59 @@ class Login extends Component {
       password: ''
     };
   }
-  doLogin(ev) {
+  async doLogin(ev) {
     if (this.state.userId === '') {
-      ToastAndroid.show('账号不能为空', ToastAndroid.SHORT);
+      Modal.alert('Error', '账号不能为空');
     } else if (this.state.password === '') {
-      ToastAndroid.show('密码不能为空', ToastAndroid.SHORT);
+      Modal.alert('Error', '密码不能为空');
     } else {
-      doPost(`select user_password from users where user_Id=${this.state.userId}`, (json) => {
+      try {
+        const json = await doPost(`select user_password from users where user_Id=${this.state.userId}`);
         if (json.user_password === this.state.password) {
           Model.setState({ userId: this.state.userId });
-          ToastAndroid.show('登录成功', ToastAndroid.LONG);
-          this.props.history.replace('/main');
+          Modal.alert('Info', '登录成功', [
+            { text: '确定', onPress: () => this.props.history.replace('/main') }
+          ]);
         } else if (json.errno) {
-          ToastAndroid.show('密码错误', ToastAndroid.SHORT);
+          Modal.alert('Error', '密码错误');
         }
-      });
+      } catch (err) {
+        Modal.alert('Error', err.toString());
+      }
     }
   }
   render() {
     return (
-      <View>
-        <Text >居家养老平台</Text>
-        <TextInput
-          value={this.state.userId}
-          onChangeText={txt => this.setState({ userId: txt })}
-          placeholder='请输入账号' />
-        <TextInput
-          secureTextEntry
-          value={this.state.password}
-          onChangeText={txt => this.setState({ password: txt })}
-          placeholder='请输入密码' />
-        <View>
-          <Button
-            title='登陆'
-            onPress={ev => this.doLogin(ev)} />
-          <Button
-            title='注册'
-            onPress={ev => this.props.history.push('/register')} />
-        </View>
-      </View>
+      <Flex style={Style.blankBorder}>
+        <Flex.Item >
+          <Card>
+            <Card.Header title='居家养老平台' />
+            <Card.Body>
+              <InputItem
+                value={this.state.userId}
+                onChange={txt => this.setState({ userId: txt })}
+                placeholder='请输入账号'>账号</InputItem>
+              <InputItem
+                type='password'
+                value={this.state.password}
+                onChange={txt => this.setState({ password: txt })}
+                placeholder='请输入密码'>密码</InputItem>
+              <Flex>
+                <Flex.Item style={Style.blankBorder}>
+                  <Button
+                    type='primary'
+                    onClick={ev => this.doLogin(ev)}>登陆</Button>
+                </Flex.Item>
+                <Flex.Item style={Style.blankBorder}>
+                  <Button
+                    type='primary'
+                    onClick={ev => this.props.history.push('/register')}>注册</Button>
+                </Flex.Item>
+              </Flex>
+            </Card.Body>
+          </Card>
+        </Flex.Item>
+      </Flex>
     );
   }
 }

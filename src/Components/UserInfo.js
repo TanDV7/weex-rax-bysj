@@ -1,6 +1,6 @@
 /**
         Author: TanDV7 - tandv7@outlook.com
-        Last modified: 2017-05-28 10:16:55
+        Last modified: 2017-05-29 00:24:53
         Filename: UserInfo.js
         Description: Created by TanDV7 using vim automatically.
 **/
@@ -26,16 +26,19 @@ class UserInfo extends Component {
   componentDidMount() {
     this.doSelectUserInfo();
   }
-  doSelectUserInfo() {
+  async doSelectUserInfo() {
     const selectUserInfo = `select * from users where user_Id='${Model.state.userId}'`;
-    doPost(selectUserInfo, (json) => {
+    try {
+      const json = await doPost(selectUserInfo);
       this.setState({
         userName: json.user_name,
         userAge: json.user_Age,
         userPhone: json.user_Phone,
         userPassword: json.user_password
       });
-    });
+    } catch (err) {
+      // TODO: 错误处理
+    }
   }
   render() {
     return (
