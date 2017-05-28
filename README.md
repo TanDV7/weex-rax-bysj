@@ -1,24 +1,19 @@
-# rax-starter-kit
+# DEV
 
-## Getting Started
+> `npm run init` to install deps
 
-### `npm run start`
+> To develop, run `npm run dev`, can install debug apk and open react-native-packager
 
-Runs the app in development mode.
+> `npm start` ca njust open react-native-packager
 
-Open [http://localhost:9999](http://localhost:9999) to view it in the browser.
+> `npm run buiild:apk` to build a release apk
 
-The page will reload if you make edits.
+> `npm run buiild:install` to install release apk
 
-### `npm run lint`
+# Before DEV
 
-You will see the lint errors in the console.
+> Open android via IDEA or AS, this setp is just to install deps needed by android project
 
-### `npm run build`
+# INFO
 
-Builds the app for production to the `build` folder.
-
-## Universal "Gotchas"
-
-- DOM & DOM like **`window`** & **`document`** do not exist on the server - so using them, or any library that uses them (jQuery for example) will not work.
-- If you need to use them, consider limiting them to wrapping them situationally with the imported *isWeb / isNode / isWeex* features from Universal. `import {isWeb, isWeex, isNode} from 'universal-env'`;
+> Now back button has some issues

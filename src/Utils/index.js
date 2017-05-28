@@ -1,6 +1,6 @@
 /**
         Author: TanDV7 - tandv7@outlook.com
-        Last modified: 2017-05-26 19:04:43
+        Last modified: 2017-05-27 15:28:46
         Filename: index.js
         Description: Created by TanDV7 using vim automatically.
 **/

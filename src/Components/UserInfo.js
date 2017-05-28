@@ -1,17 +1,15 @@
 /**
         Author: TanDV7 - tandv7@outlook.com
-        Last modified: 2017-05-26 19:13:27
-        Filename: src/Components/UserInfo.js
+        Last modified: 2017-05-28 10:16:55
+        Filename: UserInfo.js
         Description: Created by TanDV7 using vim automatically.
 **/
+import React, { Component } from 'react';
+import {
+  View, Text
+} from 'react-native';
 
-/* eslint-disable */
-import { Component, createElement } from 'rax';
-/* eslint-enable */
-import View from 'rax-view';
-import Text from 'rax-text';
-import styles from '../Styles/index.css';
-
+import Model from '../Model';
 import { doPost } from '../Utils';
 
 class UserInfo extends Component {
@@ -29,7 +27,7 @@ class UserInfo extends Component {
     this.doSelectUserInfo();
   }
   doSelectUserInfo() {
-    const selectUserInfo = `select * from users where user_Id='${this.props.userId}'`;
+    const selectUserInfo = `select * from users where user_Id='${Model.state.userId}'`;
     doPost(selectUserInfo, (json) => {
       this.setState({
         userName: json.user_name,
@@ -42,19 +40,15 @@ class UserInfo extends Component {
   render() {
     return (
       <View>
-        <Text style={styles.appBanner}>用户信息</Text>
+        <Text>用户信息</Text>
         <Text>账号</Text>
-        <Text
-          value={this.props.userId} />
+        <Text>{this.props.userId}</Text>
         <Text>用户名</Text>
-        <Text
-          value={this.state.userName} />
+        <Text>{this.state.userName}</Text>
         <Text>年龄</Text>
-        <Text
-          value={this.state.userAge} />
+        <Text>{this.state.userAge}</Text>
         <Text>性别</Text>
-        <Text
-          value={this.state.userSex} />
+        <Text>{this.state.userSex}</Text>
         <Text>手机</Text>
         <Text>密码</Text>
       </View>
