@@ -20,6 +20,6 @@
 
 # Some screensoots
 
-![image](http://github.com/TanDV7/weex-rax-bysj/raw/master/images/1.jpg)
+![image](https://raw.githubusercontent.com/TanDV7/weex-rax-bysj/master/images/1.jpg)
 
-![image](http://github.com/TanDV7/weex-rax-bysj/raw/master/images/2.jpg)
+![image](https://raw.githubusercontent.com/TanDV7/weex-rax-bysj/master/images/2.jpg)
