@@ -1,6 +1,6 @@
 /**
         Author: TanDV7 - tandv7@outlook.com
-        Last modified: 2017-05-27 09:37:16
+        Last modified: 2017-05-28 09:58:42
         Filename: Main.js
         Description: Created by TanDV7 using vim automatically.
 **/
@@ -9,27 +9,28 @@ import {
   View, Button, Text
 } from 'react-native';
 
-// import styles from '../Styles/index.css';
-const styles = {};
-
-function Main() {
+function Main(props) {
   return (
-    <View style={styles.app}>
-      <View style={styles.appBanner}>
-        <Text style={styles.appBanner}>主界面</Text>
+    <View>
+      <View>
+        <Text >主界面</Text>
       </View>
-      <View style={styles.appBanner}>
+      <View >
         <Button
-          onPress={ev => this.props.toMedical(ev)}
-          style={styles.button}>医疗档案</Button>
+          title='医疗档案'
+          onPress={ev => props.history.push('/medical')} />
         <Button
-          onPress={ev => this.props.toService(ev)}
-          style={styles.button}>服务内容</Button>
-        <Button style={styles.button}>活动内容</Button>
-        <Button style={styles.button}>订阅内容</Button>
+          title='服务内容'
+          onPress={ev => props.history.push('/serivce')} />
         <Button
-          onPress={ev => this.props.toUserInfo(ev)}
-          style={styles.button}>用户管理</Button>
+          title='活动内容'
+          onPress={() => {}} />
+        <Button
+          title='订阅内容'
+          onPress={() => {}} />
+        <Button
+          title='用户管理'
+          onPress={ev => props.history.push('/userinfo')} />
       </View>
     </View>
   );

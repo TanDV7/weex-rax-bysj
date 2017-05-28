@@ -1,6 +1,6 @@
 /**
         Author: TanDV7 - tandv7@outlook.com
-        Last modified: 2017-05-27 18:24:44
+        Last modified: 2017-05-28 10:02:52
         Filename: Login.js
         Description: Created by TanDV7 using vim automatically.
 **/
@@ -8,8 +8,12 @@ import React, { Component } from 'react';
 import {
   View, Button, Text, TextInput, ToastAndroid
 } from 'react-native';
+import { observer } from 'mobx-react';
+
+import Model from '../Model';
 import { doPost } from '../Utils';
 
+@observer
 class Login extends Component {
   constructor(props) {
     super(props);
@@ -26,7 +30,7 @@ class Login extends Component {
     } else {
       doPost(`select user_password from users where user_Id=${this.state.userId}`, (json) => {
         if (json.user_password === this.state.password) {
-          this.props.setUserId(this.state.userId);
+          Model.setState({ userId: this.state.userId });
           ToastAndroid.show('登录成功', ToastAndroid.LONG);
           this.props.history.replace('/main');
         } else if (json.errno) {
