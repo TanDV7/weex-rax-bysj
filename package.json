@@ -5,6 +5,7 @@
   "scripts": {
     "dev": "react-native run-android",
     "init": "npm install --registry=https://registry.npm.taobao.org",
+    "devtools": "react-devtools",
     "build:apk": "cd android && ./gradlew assembleRelease",
     "build:install": "cd android && ./gradlew installRelease",
     "start": "node node_modules/react-native/local-cli/cli.js start"
@@ -18,7 +19,6 @@
     "react-native-elements": "^0.12.2",
     "react-native-navigator-router": "^0.2.1",
     "react-native-vector-icons": "^4.1.1",
-    "react-router-dom": "^4.1.1",
     "react-router-native": "^4.1.1"
   },
   "devDependencies": {
@@ -33,6 +33,7 @@
     "eslint-plugin-jsx-a11y": "^4.0.0",
     "eslint-plugin-react": "^6.10.3",
     "jest": "20.0.4",
+    "react-devtools": "^2.2.1",
     "react-test-renderer": "16.0.0-alpha.6"
   },
   "jest": {
