@@ -15,7 +15,7 @@ export default class BackWrapper extends Component {
     if (isSet) return;
     isSet = true;
     BackHandler.addEventListener('hardwareBackPress', () => {
-      if (lastBack && lastBack + 1000 >= Date.now()) {
+      if (lastBack && lastBack + 300 >= Date.now()) {
         BackHandler.exitApp();
         return true;
       }

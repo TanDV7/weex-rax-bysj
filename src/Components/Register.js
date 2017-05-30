@@ -1,14 +1,13 @@
 /**
         Author: TanDV7 - tandv7@outlook.com
-        Last modified: 2017-05-29 00:27:55
-        Filename: Components/Register.js
+        Last modified: 2017-05-30 20:31:45
+        Filename: Register.js
         Description: Created by TanDV7 using vim automatically.
 **/
 import React, { Component } from 'react';
-import {
-  Button, View, Text, TextInput, ToastAndroid
-} from 'react-native';
+import { Modal, Flex, Card, Button, InputItem } from 'antd-mobile';
 
+import Style from '../Styles';
 import { doPost } from '../Utils';
 
 class Register extends Component {
@@ -24,18 +23,18 @@ class Register extends Component {
     const sql = `insert into users(user_Id,user_password) 
                     values('${this.state.userId}','${this.state.password}')`;
     if (this.state.user === '') {
-      ToastAndroid.show('请输入账号', ToastAndroid.SHORT);
+      Modal.alert('Error', '请输入账号');
     } else if (this.state.password === '') {
-      ToastAndroid.show('请输入密码', ToastAndroid.SHORT);
+      Modal.alert('Error', '请输入密码');
     } else if (this.state.rptPassword !== this.state.password) {
-      ToastAndroid.show('请保证两次密码一致', ToastAndroid.SHORT);
+      Modal.alert('Error', '请保证两次密码一致');
     } else {
       try {
         const json = await doPost(sql);
         if (json.errno) {
-          ToastAndroid.show('用户已存在', ToastAndroid.SHORT);
+          Modal.alert('Error', '用户已存在');
         } else {
-          ToastAndroid.show('注册并登录成功', ToastAndroid.SHORT);
+          Modal.alert('Info', '注册并登录成功');
           this.props.history.push('/main');
         }
       } catch (err) {
@@ -45,30 +44,32 @@ class Register extends Component {
   }
   render() {
     return (
-      <View >
-        <Text >注册</Text>
-        <View >
-          <TextInput
-            value={this.state.userId}
-            onChangeText={txt => this.setState({ userId: txt })}
-            placeholder='请输入账号' />
-          <TextInput
-            secureTextEntry
-            value={this.state.password}
-            onChangeText={txt => this.setState({ passwod: txt })}
-            password='true'
-            placeholder='请输入密码' />
-          <TextInput
-            secureTextEntry
-            value={this.state.rptPassword}
-            onChangeText={txt => this.setState({ rptPassword: txt })}
-            password='true'
-            placeholder='再次输入密码' />
-          <Button
-            title='注册并登录'
-            onPress={ev => this.doRegister(ev)} />
-        </View>
-      </View>
+      <Flex style={Style.blankBorder}>
+        <Flex.Item >
+          <Card>
+            <Card.Header title='注册' />
+            <Card.Body>
+              <InputItem
+                value={this.state.userId}
+                onChange={txt => this.setState({ userId: txt })}
+                placeholder='请输入账号' />
+              <InputItem
+                value={this.state.password}
+                onChange={txt => this.setState({ password: txt })}
+                type='password'
+                placeholder='请输入密码' />
+              <InputItem
+                value={this.state.rptPassword}
+                onChange={txt => this.setState({ rptPassword: txt })}
+                type='password'
+                placeholder='再次输入密码' />
+              <Button
+                type='primary'
+                onClick={ev => this.doRegister(ev)}>注册并登录</Button>
+            </Card.Body>
+          </Card>
+        </Flex.Item>
+      </Flex>
     );
   }
 }

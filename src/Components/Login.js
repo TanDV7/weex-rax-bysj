@@ -1,7 +1,7 @@
 /**
         Author: TanDV7 - tandv7@outlook.com
-        Last modified: 2017-05-28 23:28:02
-        Filename: src/Components/Login.js
+        Last modified: 2017-05-30 20:31:49
+        Filename: Login.js
         Description: Created by TanDV7 using vim automatically.
 **/
 import React, { Component } from 'react';
