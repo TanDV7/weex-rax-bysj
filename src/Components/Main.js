@@ -1,7 +1,7 @@
 /**
         Author: TanDV7 - tandv7@outlook.com
-        Last modified: 2017-05-30 20:51:32
-        Filename: Main.js
+        Last modified: 2017-05-31 10:48:56
+        Filename: src/Components/Main.js
         Description: Created by TanDV7 using vim automatically.
 **/
 import React from 'react';
@@ -11,32 +11,32 @@ import Style from '../Styles';
 
 const data = [
   {
-    icon: <Icon type='check' />,
+    icon: <Icon type={'\ue699'} />,
     text: '医疗档案',
     onClick: props => props.history.push('/medical')
   },
   {
-    icon: <Icon type='check' />,
+    icon: <Icon type={'\ue65f'} />,
     text: '服务内容',
     onClick: props => props.history.push('/service')
   },
   {
-    icon: <Icon type='check' />,
+    icon: <Icon type={'\ue951'} />,
     text: '活动内容',
     onClick: () => {}
   },
   {
-    icon: <Icon type='check' />,
+    icon: <Icon type={'\ue665'} />,
     text: '订阅内容',
     onClick: () => {}
   },
   {
-    icon: <Icon type='check' />,
+    icon: <Icon type={'\ue6a8'} />,
     text: '用户管理',
     onClick: props => props.history.push('/userinfo')
   },
   {
-    icon: <Icon type='check' />,
+    icon: <Icon type={'\ue67c'} />,
     text: '关于软件',
     onClick: () => Modal.alert('Info', '我是你爸爸！')
   }
