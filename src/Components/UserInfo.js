@@ -1,6 +1,6 @@
 /**
         Author: TanDV7 - tandv7@outlook.com
-        Last modified: 2017-05-29 00:24:53
+        Last modified: 2017-05-31 15:45:41
         Filename: UserInfo.js
         Description: Created by TanDV7 using vim automatically.
 **/
@@ -8,10 +8,12 @@ import React, { Component } from 'react';
 import {
   View, Text
 } from 'react-native';
+import { observer } from 'mobx-react';
 
 import Model from '../Model';
 import { doPost } from '../Utils';
 
+@observer
 class UserInfo extends Component {
   constructor(props) {
     super(props);
