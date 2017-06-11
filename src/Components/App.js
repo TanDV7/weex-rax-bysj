@@ -1,6 +1,6 @@
 /**
         Author: TanDV7 - tandv7@outlook.com
-        Last modified: 2017-05-27 15:23:17
+        Last modified: 2017-05-31 16:03:07
         Filename: src/Components/App.js
         Description: Created by TanDV7 using vim automatically.
 **/
@@ -13,6 +13,7 @@ import Login from '../Components/Login';
 import Main from '../Components/Main';
 import Medical from '../Components/Medical';
 import UserInfo from '../Components/UserInfo';
+import EditUserInfo from '../Components/EditUserInfo';
 import Service from '../Components/Service';
 import BackWrapper from '../Components/BackWrapper';
 
@@ -27,6 +28,7 @@ function App() {
         <Route exact path='/service' component={Service} />
         <Route exact path='/register' component={Register} />
         <Route exact path='/userinfo' component={UserInfo} />
+        <Route exact path='/edituserinfo' component={EditUserInfo} />
       </View>
     </NativeRouter>
   );

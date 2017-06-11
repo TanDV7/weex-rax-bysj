@@ -1,6 +1,6 @@
 /**
         Author: TanDV7 - tandv7@outlook.com
-        Last modified: 2017-05-31 15:47:17
+        Last modified: 2017-06-03 22:27:00
         Filename: Login.js
         Description: Created by TanDV7 using vim automatically.
 **/
@@ -20,6 +20,16 @@ class Login extends Component {
       userId: '',
       password: ''
     };
+  }
+  componentDidMount() {
+    if (Model.state.userId !== '') {
+      this.props.history.push('/main');
+    }
+  }
+  componentDidUpdate() {
+    if (Model.state.userId !== '') {
+      this.props.history.push('/main');
+    }
   }
   async doLogin(ev) {
     if (this.state.userId === '') {
@@ -43,6 +53,9 @@ class Login extends Component {
     }
   }
   render() {
+    /* eslint-disable */
+    console.log(Model.state.userId);
+    /* eslint-edable */
     return (
       <Flex style={Style.blankBorder}>
         <Flex.Item >
