@@ -25,13 +25,13 @@ function setDig(num) {
   return num;
 }
 
-function getNowTime(){
+function getNowTime() {
   const time = new Date();
-  let year = time.getFullYear();
-  let month = time.getMonth() + 1;
-  let day = time.getDate();
-  let hour = time.getHours();
-  let minute = time.getMinutes();
+  const year = time.getFullYear();
+  const month = time.getMonth() + 1;
+  const day = time.getDate();
+  const hour = time.getHours();
+  const minute = time.getMinutes();
   return `${year}${setDig(month)}${setDig(day)}${setDig(hour)}${setDig(minute)}`;
 }
 

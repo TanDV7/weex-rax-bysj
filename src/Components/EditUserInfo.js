@@ -27,19 +27,19 @@ class EditUserInfo extends Component {
     };
   }
   async doUpdateUserInfo(ev) {
-    try{
+    try {
       const json = await doPost(`select user_password from users where user_Id=${Model.state.userId}`);
-      if(json.user_password == this.state.password) {
-       if(this.state.newPassword === null) {
+      if (json.user_password == this.state.password) {
+        if (this.state.newPassword === null) {
 
-       }
+        }
       } else {
         Modal.alert('Error', '请输入正确的原密码');
       }
-  } catch (err) {
-    Modal.alert('Error', err.toString());
+    } catch (err) {
+      Modal.alert('Error', err.toString());
+    }
   }
-}
   render() {
     return (
       <Flex style={Style.blankBorder}>

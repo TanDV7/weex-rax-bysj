@@ -26,7 +26,7 @@ class Service extends Component {
     };
   }
   async componentDidMount() {
-    let json = await doPost(`select * from service`, true);
+    let json = await doPost('select * from service', true);
     const service = json;
     try {
       if (json.error) {
@@ -46,7 +46,7 @@ class Service extends Component {
       console.log(service);
       console.log(json);
       json = json.map((s) => {
-        for (let i=0;i<service.length;++i) {
+        for (let i = 0; i < service.length; ++i) {
           if (service[i][0] === s[0]) {
             return service[i];
           }
@@ -78,7 +78,7 @@ class Service extends Component {
                           onPress={() => {}}
                           underlayColor='#ffffff'>
                           <Image
-                            style={{width: 40, height: 40}}
+                            style={{ width: 40, height: 40 }}
                             source={{ uri: `http://123.206.211.92/${rowData[2]}` }} />
                         </TouchableHighlight>
                       </Flex.Item>
@@ -108,24 +108,24 @@ class Service extends Component {
                           onPress={() => this.props.history.push(`/serviceinfo/${rowData[0]}`)}
                           underlayColor='#ffffff'>
                           <Image
-                            style={{width: 40, height: 40}}
+                            style={{ width: 40, height: 40 }}
                             source={{ uri: `http://123.206.211.92/${rowData[2]}` }} />
-                          </TouchableHighlight>
-                        </Flex.Item>
-                        <Flex.Item>
-                          <TouchableHighlight
-                            onPress={() => this.props.history.push(`/serviceinfo/${rowData[0]}`)}
-                            underlayColor='#ffffff'>
-                            <Text>{rowData[1]}</Text>
-                          </TouchableHighlight>
-                        </Flex.Item>
-                        <Flex.Item>
-                          <TouchableHighlight
-                            onPress={() => this.props.history.push(`/serviceinfo/${rowData[0]}`)}
-                            underlayColor='#ffffff'>
-                            <Text>{rowData[4]}</Text>
-                          </TouchableHighlight>
-                        </Flex.Item>
+                        </TouchableHighlight>
+                      </Flex.Item>
+                      <Flex.Item>
+                        <TouchableHighlight
+                          onPress={() => this.props.history.push(`/serviceinfo/${rowData[0]}`)}
+                          underlayColor='#ffffff'>
+                          <Text>{rowData[1]}</Text>
+                        </TouchableHighlight>
+                      </Flex.Item>
+                      <Flex.Item>
+                        <TouchableHighlight
+                          onPress={() => this.props.history.push(`/serviceinfo/${rowData[0]}`)}
+                          underlayColor='#ffffff'>
+                          <Text>{rowData[4]}</Text>
+                        </TouchableHighlight>
+                      </Flex.Item>
                     </Flex>
                   )} />
               </ScrollView>

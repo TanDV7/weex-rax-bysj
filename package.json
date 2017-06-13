@@ -5,7 +5,8 @@
   "scripts": {
     "dev": "react-native run-android",
     "init": "npm install --registry=https://registry.npm.taobao.org",
-    "devtools": "react-devtools",
+    "lint": "find src *.js | grep \\.js$ | xargs eslint",
+    "lint:fix": "find src *.js | grep \\.js$ | xargs eslint --fix",
     "build:apk": "cd android && ./gradlew assembleRelease",
     "build:install": "cd android && ./gradlew installRelease",
     "start": "node node_modules/react-native/local-cli/cli.js start"
@@ -33,7 +34,6 @@
     "eslint-plugin-jsx-a11y": "^4.0.0",
     "eslint-plugin-react": "^6.10.3",
     "jest": "20.0.4",
-    "react-devtools": "^2.2.1",
     "react-test-renderer": "16.0.0-alpha.6"
   },
   "jest": {

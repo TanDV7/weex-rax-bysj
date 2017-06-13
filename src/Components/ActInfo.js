@@ -35,9 +35,9 @@ class ActInfo extends Component {
     }
   }
   async doJoinAct() {
-    const json = await doPost(`insert into user_act values('${Model.state.userId}','${this.props.match.params.name}','已参加','${getNowTime()}',NULL)`)
+    const json = await doPost(`insert into user_act values('${Model.state.userId}','${this.props.match.params.name}','已参加','${getNowTime()}',NULL)`);
     Modal.alert('Info', '已参加', [
-      { text: '确定', onPress: () => this.props.history.replace('/act')}
+      { text: '确定', onPress: () => this.props.history.replace('/act') }
     ]);
   }
   render() {
@@ -59,7 +59,7 @@ class ActInfo extends Component {
               <Text>活动状态</Text>
               <Text>{this.state.act_Status}</Text>
               <Button
-                onClick={(ev) => this.doJoinAct()}>参加</Button>
+                onClick={ev => this.doJoinAct()}>参加</Button>
             </Card.Body>
           </Card>
         </Flex.Item>

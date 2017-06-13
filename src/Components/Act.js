@@ -19,14 +19,14 @@ import Style from '../Styles';
 class Act extends Component {
   constructor(props) {
     super(props);
-    this.ds = new ListView.DataSource({ rowHasChanged: (r1, r2) => r1 !== r2});
+    this.ds = new ListView.DataSource({ rowHasChanged: (r1, r2) => r1 !== r2 });
     this.state = {
       userId: '',
       dataSource: this.ds.cloneWithRows([])
     };
   }
   async componentDidMount() {
-    const json = await doPost(`select act_Name,act_id from act`, true);
+    const json = await doPost('select act_Name,act_id from act', true);
     try {
       if (json.error) {
         // TODO
@@ -59,7 +59,7 @@ class Act extends Component {
                         </TouchableHighlight>
                       </Flex.Item>
                     </Flex>
-                  )}/>
+                  )} />
               </ScrollView>
             </Card.Body>
           </Card>
