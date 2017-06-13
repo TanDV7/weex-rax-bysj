@@ -1,6 +1,6 @@
 /**
         Author: TanDV7 - tandv7@outlook.com
-        Last modified: 2017-05-31 10:48:56
+        Last modified: 2017-06-10 16:01:52
         Filename: src/Components/Main.js
         Description: Created by TanDV7 using vim automatically.
 **/
@@ -21,7 +21,7 @@ const data = [
     onClick: props => props.history.push('/service')
   },
   {
-    icon: <Icon type={'\ue951'} />,
+    icon: <Icon type={'\ue90f'} />,
     text: '活动内容',
     onClick: props => props.history.push('/act')
   },
@@ -47,7 +47,7 @@ function Main(props) {
     <Flex style={Style.blankBorder}>
       <Flex.Item >
         <Card>
-          <Card.Header title='主界面' />
+          <Card.Header title='居家养老平台' />
           <Card.Body style={Style.blankBorder}>
             <Grid
               hasLine

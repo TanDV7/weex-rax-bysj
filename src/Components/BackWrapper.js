@@ -1,7 +1,7 @@
 /**
         Author: SpringHack - springhack@live.cn
-        Last modified: 2017-05-31 21:35:33
-        Filename: src/Components/BackWrapper.js
+        Last modified: 2017-06-10 16:06:12
+        Filename: BackWrapper.js
         Description: Created by SpringHack using vim automatically.
 **/
 import React, { Component } from 'react';
@@ -12,6 +12,10 @@ import Style from '../Styles';
 
 let isSet = false;
 let lastBack = 0;
+
+const barTitle = {
+  '/main': '主界面'
+};
 
 export default class BackWrapper extends Component {
   componentDidMount() {
@@ -39,7 +43,7 @@ export default class BackWrapper extends Component {
           </TouchableHighlight>
         </Flex.Item>
         <Flex.Item>
-          <Text style={Style.navBarTitle}>{this.props.location.pathname}</Text>
+          <Text style={Style.navBarTitle}>{barTitle[this.props.location.pathname]}</Text>
         </Flex.Item>
         <Flex.Item style={Style.navBarBack}>
           <View />
