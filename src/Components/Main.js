@@ -23,7 +23,7 @@ const data = [
   {
     icon: <Icon type={'\ue951'} />,
     text: '活动内容',
-    onClick: () => {}
+    onClick: props => props.history.push('/act')
   },
   {
     icon: <Icon type={'\ue665'} />,

@@ -67,7 +67,13 @@ class UserInfo extends Component {
                 type='primary'
                 onClick={ev => this.props.history.push('/edituserinfo')}>编辑</Button>
               <Button
-                type='primary'>注销</Button>
+                type='primary'
+                onClick={() => {
+                  Model.setState({
+                    userId: ''
+                  });
+                  this.props.history.replace('/');
+                }}>注销</Button>
             </Card.Body>
           </Card>
         </Flex.Item>

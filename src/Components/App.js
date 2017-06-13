@@ -15,7 +15,9 @@ import Medical from '../Components/Medical';
 import UserInfo from '../Components/UserInfo';
 import EditUserInfo from '../Components/EditUserInfo';
 import Service from '../Components/Service';
+import Act from '../Components/Act';
 import BackWrapper from '../Components/BackWrapper';
+import ActInfo from '../Components/ActInfo';
 
 function App() {
   return (
@@ -26,9 +28,11 @@ function App() {
         <Route exact path='/main' component={Main} />
         <Route exact path='/medical' component={Medical} />
         <Route exact path='/service' component={Service} />
+        <Route exact path='/act' component={Act} />
         <Route exact path='/register' component={Register} />
         <Route exact path='/userinfo' component={UserInfo} />
         <Route exact path='/edituserinfo' component={EditUserInfo} />
+        <Route exact path='/actinfo/:name' component={ActInfo} />
       </View>
     </NativeRouter>
   );

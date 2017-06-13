@@ -1,6 +1,6 @@
 /**
         Author: TanDV7 - tandv7@outlook.com
-        Last modified: 2017-05-31 20:36:14
+        Last modified: 2017-06-13 10:14:00
         Filename: EditUserInfo.js
         Description: Created by TanDV7 using vim automatically.
 **/
@@ -36,9 +36,9 @@ class EditUserInfo extends Component {
       } else {
         Modal.alert('Error', '请输入正确的原密码');
       }
-    }
   } catch (err) {
     Modal.alert('Error', err.toString());
+  }
 }
   render() {
     return (

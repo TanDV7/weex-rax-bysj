@@ -45,6 +45,7 @@
     "generator-star-spacing": [2, "after"],
     "space-before-function-paren": [2, { "anonymous": "always", "named": "never" }],
     "react/jsx-filename-extension": [1, { "extensions": [".js", ".jsx"] }],
+    "react/no-did-mount-set-state": 0,
     "react/react-in-jsx-scope": 0,
     "react/jsx-uses-react": 2,
     "react/jsx-uses-vars": 2,
