@@ -1,13 +1,13 @@
 /**
         Author: TanDV7 - tandv7@outlook.com
-        Last modified: 2017-05-28 10:15:43
+        Last modified: 2017-06-14 19:22:24
         Filename: Medical.js
         Description: Created by TanDV7 using vim automatically.
 **/
 
 import React, { Component } from 'react';
 import {
-  ScrollView, Image, Text, ListView, TouchableHighlight, View
+  ScrollView, Text, ListView, TouchableHighlight
 } from 'react-native';
 // import { observer } from 'mobx-react';
 import { Flex, Card, Button } from 'antd-mobile';
@@ -23,11 +23,10 @@ class Medical extends Component {
     this.state = {
       userId: '',
       dataSource: this.ds.cloneWithRows([])
-    }
+    };
   }
   async componentDidMount() {
     const json = await doPost(`select med_name from med where user_id='${Model.state.userId}'`, true);
-    console.log(json);
     try {
       if (json.error) {
         // TODO
@@ -48,7 +47,7 @@ class Medical extends Component {
             <Card.Body>
               <ScrollView>
                 <ListView
-                  renderHeader={() => (<Text>所有档案</Text>)}
+                  renderHeader={() => (<Text style={Style.blankBorder}>所有档案</Text>)}
                   dataSource={this.state.dataSource}
                   renderRow={rowData => (
                     <Flex>
@@ -56,13 +55,13 @@ class Medical extends Component {
                         <TouchableHighlight
                           onPress={() => this.props.history.push}
                           underlayColor='#3366ff'>
-                          <Text>{rowData[0]}</Text>
+                          <Text style={Style.belowBorder}>{rowData[0]}</Text>
                         </TouchableHighlight>
                       </Flex.Item>
                     </Flex>
                   )} />
               </ScrollView>
-              <Button>新建档案</Button>
+              <Button type='primary' style={Style.blankBorder}>新建档案</Button>
             </Card.Body>
           </Card>
         </Flex.Item>

@@ -1,7 +1,7 @@
 /**
         Author: TanDV7 - tandv7@outlook.com
-        Last modified: 2017-06-13 11:54:10
-        Filename: Components/Service.js
+        Last modified: 2017-06-14 19:30:31
+        Filename: Service.js
         Description: Created by TanDV7 using vim automatically.
 **/
 
@@ -63,30 +63,30 @@ class Service extends Component {
         <Flex.Item >
           <Card>
             <Card.Header title='居家养老平台' />
-            <Card.Body>
+            <Card.Body style={Style.blankPadding}>
               <ScrollView>
                 <ListView
                   renderHeader={() => (<Text>所有服务</Text>)}
                   dataSource={this.state.dataSource}
                   renderRow={rowData => (
-                    <Flex>
-                      <Flex.Item>
+                    <Flex style={Style.blankBorder}>
+                      <Flex.Item style={Style.grow4}>
                         <TouchableHighlight
                           onPress={() => this.props.history.push(`/serviceinfo/${rowData[0]}`)}
                           underlayColor='#ffffff'>
                           <Image
-                            style={{ width: 40, height: 40 }}
+                            style={{ width: 32, height: 32 }}
                             source={{ uri: `http://123.206.211.92/${rowData[2]}` }} />
                         </TouchableHighlight>
                       </Flex.Item>
-                      <Flex.Item>
+                      <Flex.Item style={Style.grow1}>
                         <TouchableHighlight
                           onPress={() => this.props.history.push(`/serviceinfo/${rowData[0]}`)}
                           underlayColor='#ffffff'>
                           <Text>{rowData[1]}</Text>
                         </TouchableHighlight>
                       </Flex.Item>
-                      <Flex.Item>
+                      <Flex.Item style={Style.grow1}>
                         <TouchableHighlight
                           onPress={() => this.props.history.push(`/serviceinfo/${rowData[0]}`)}
                           underlayColor='#ffffff'>
@@ -99,24 +99,24 @@ class Service extends Component {
                   renderHeader={() => (<Text>我的服务</Text>)}
                   dataSource={this.state.myDataSource}
                   renderRow={rowData => (
-                    <Flex>
-                      <Flex.Item>
+                    <Flex style={Style.blankBorder}>
+                      <Flex.Item style={Style.grow4}>
                         <TouchableHighlight
                           onPress={() => this.props.history.push(`/myserviceinfo/${rowData[0]}`)}
                           underlayColor='#ffffff'>
                           <Image
-                            style={{ width: 40, height: 40 }}
+                            style={{ width: 32, height: 32 }}
                             source={{ uri: `http://123.206.211.92/${rowData[2]}` }} />
                         </TouchableHighlight>
                       </Flex.Item>
-                      <Flex.Item>
+                      <Flex.Item style={Style.grow1}>
                         <TouchableHighlight
                           onPress={() => this.props.history.push(`/myserviceinfo/${rowData[0]}`)}
                           underlayColor='#ffffff'>
                           <Text>{rowData[1]}</Text>
                         </TouchableHighlight>
                       </Flex.Item>
-                      <Flex.Item>
+                      <Flex.Item style={Style.grow1}>
                         <TouchableHighlight
                           onPress={() => this.props.history.push(`/myserviceinfo/${rowData[0]}`)}
                           underlayColor='#ffffff'>

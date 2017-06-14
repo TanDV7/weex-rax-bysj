@@ -1,6 +1,6 @@
 /**
         Author: TanDV7 - tandv7@outlook.com
-        Last modified: 2017-06-13 10:14:00
+        Last modified: 2017-06-14 19:58:05
         Filename: EditUserInfo.js
         Description: Created by TanDV7 using vim automatically.
 **/
@@ -31,20 +31,18 @@ class EditUserInfo extends Component {
   }
   async doUpdateUserInfo(ev) {
     try {
-      if(this.props.match.params.password !== this.state.oldPassword) {
+      if (this.props.match.params.password !== this.state.oldPassword) {
         Modal.alert('消息', '请输入正确的原密码');
+      } else if (this.state.newPassword === '') {
+        const json = await doPost(`update users set user_name='${this.state.userName}',user_Age='${this.state.userAge}',user_Gender='${this.state.userSex}',user_Phone='${this.state.userPhone}',user_Id_Number='${this.state.userIdNumber}' where user_Id='${Model.state.userId}'`);
+        Modal.alert('消息', '修改成功', [
+            { text: '确定', onPress: () => this.props.history.replace('/userinfo') }
+        ]);
       } else {
-        if(this.state.newPassword === '') {
-          let json = await doPost(`update users set user_name='${this.state.userName}',user_Age='${this.state.userAge}',user_Gender='${this.state.userSex}',user_Phone='${this.state.userPhone}',user_Id_Number='${this.state.userIdNumber}' where user_Id='${Model.state.userId}'`);
-          Modal.alert('消息', '修改成功', [
+        const json = await doPost(`update users set user_name='${this.state.userName}',user_Age='${this.state.userAge}',user_Gender='${this.state.userSex}',user_Phone='${this.state.userPhone}',user_Id_Number='${this.state.userIdNumber}',user_password='${this.state.newPassword}' where user_Id='${Model.state.userId}'`);
+        Modal.alert('消息', '修改成功', [
             { text: '确定', onPress: () => this.props.history.replace('/userinfo') }
-          ]);
-        } else {
-          let json = await doPost(`update users set user_name='${this.state.userName}',user_Age='${this.state.userAge}',user_Gender='${this.state.userSex}',user_Phone='${this.state.userPhone}',user_Id_Number='${this.state.userIdNumber}',user_password='${this.state.newPassword}' where user_Id='${Model.state.userId}'`);
-          Modal.alert('消息', '修改成功', [
-            { text: '确定', onPress: () => this.props.history.replace('/userinfo') }
-          ]);
-        }
+        ]);
       }
     } catch (e) {
 
@@ -59,12 +57,12 @@ class EditUserInfo extends Component {
             <Card.Body>
               <InputItem
                 value={this.state.userName}
-                onChange={txt => this.setState({ userName: txt})}
+                onChange={txt => this.setState({ userName: txt })}
                 placeholder='请输入姓名'>用户名</InputItem>
               <InputItem
                 maxLength={3}
                 value={this.state.userAge}
-                onChange={txt => this.setState({ userAge: txt})}
+                onChange={txt => this.setState({ userAge: txt })}
                 type='number'
                 placeholder='请输入年龄'>年龄</InputItem>
               <Flex>
@@ -85,26 +83,27 @@ class EditUserInfo extends Component {
               <InputItem
                 maxLength={13}
                 value={this.state.userPhone}
-                onChange={txt => this.setState({ userPhone: txt})}
+                onChange={txt => this.setState({ userPhone: txt })}
                 type='phone'
                 placeholder='请输入手机'>手机</InputItem>
               <InputItem
                 maxLength={18}
                 value={this.state.userIdNumber}
-                onChange={txt => this.setState({ userIdNumber: txt})}
+                onChange={txt => this.setState({ userIdNumber: txt })}
                 type='number'
                 placeholder='请输入身份证号'>身份证号</InputItem>
               <InputItem
                 type='password'
-                onChange={txt => this.setState({ oldPassword: txt})}
+                onChange={txt => this.setState({ oldPassword: txt })}
                 value={this.state.oldPassword}
                 placeholder='请输入正确的原密码'>原密码</InputItem>
               <InputItem
                 type='password'
-                onChange={txt => this.setState({ newPassword: txt})}
+                onChange={txt => this.setState({ newPassword: txt })}
                 value={this.state.newPassword}
                 placeholder='请输入新密码(可以为空)'>新密码</InputItem>
               <Button
+                style={Style.blankBorder}
                 onClick={ev => this.doUpdateUserInfo()}
                 type='primary'>确认</Button>
             </Card.Body>

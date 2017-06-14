@@ -1,7 +1,7 @@
 /**
         Author: TanDV7 - tandv7@outlook.com
-        Last modified: 2017-05-31 16:03:07
-        Filename: src/Components/App.js
+        Last modified: 2017-06-14 19:14:45
+        Filename: App.js
         Description: Created by TanDV7 using vim automatically.
 **/
 import React from 'react';
@@ -37,8 +37,8 @@ function App() {
         <Route exact path='/edituserinfo/:password' component={EditUserInfo} />
         <Route exact path='/actinfo/:name' component={ActInfo} />
         <Route exact path='/myservice/:name' component={MyService} />
-        <Route exact path='/myact/' component={MyAct}/>
-        <Route exact path='news' component={News}/>
+        <Route exact path='/myact' component={MyAct} />
+        <Route exact path='news' component={News} />
       </View>
     </NativeRouter>
   );

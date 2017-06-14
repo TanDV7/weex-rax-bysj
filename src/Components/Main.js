@@ -1,13 +1,14 @@
 /**
         Author: TanDV7 - tandv7@outlook.com
-        Last modified: 2017-06-10 16:01:52
-        Filename: src/Components/Main.js
+        Last modified: 2017-06-14 19:50:14
+        Filename: Main.js
         Description: Created by TanDV7 using vim automatically.
 **/
 import React from 'react';
 import { Modal, Icon, Grid, Flex, Card } from 'antd-mobile';
 
 import Style from '../Styles';
+import { desc } from '../Utils';
 
 const data = [
   {
@@ -26,7 +27,7 @@ const data = [
     onClick: props => props.history.push('/act')
   },
   {
-    icon: <Icon type={'\ue665'}/>,
+    icon: <Icon type={'\ue665'} />,
     text: '订阅内容',
     onClick: props => props.history.push('/news')
   },
@@ -38,7 +39,7 @@ const data = [
   {
     icon: <Icon type={'\ue67c'} />,
     text: '关于软件',
-    onClick: () => Modal.alert('Info', '我是你爸爸！')
+    onClick: () => Modal.alert('App 简介', desc)
   }
 ];
 

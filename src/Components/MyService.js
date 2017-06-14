@@ -31,8 +31,8 @@ class MyService extends Component {
               <Text>服务人员姓名</Text>
               <Text>{this.state.title}</Text>
               <image
-                style={{width: 40, height: 40}}
-                source={{ uri: `http://123.206.211.92/${rowData[2]}` }}></image>
+                style={{ width: 40, height: 40 }}
+                source={{ uri: `http://123.206.211.92/${rowData[2]}` }} />
               <Text>服务人员联系方式</Text>
               <Text>{this.state.service_Phone}</Text>
               <Text>服务类型</Text>
@@ -43,7 +43,7 @@ class MyService extends Component {
           </Card>
         </Flex.Item>
       </Flex>
-    )
+    );
   }
 }
 

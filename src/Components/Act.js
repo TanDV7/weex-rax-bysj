@@ -1,6 +1,6 @@
 /**
         Author: TanDV7 - tandv7@outlook.com
-        Last modified: 2017-05-28 17:17:52
+        Last modified: 2017-06-14 19:38:34
         Filename: Act.js
         Description: Created by TanDV7 using vim automatically.
 **/
@@ -26,7 +26,7 @@ class Act extends Component {
     };
   }
   async componentDidMount() {
-    const json = await doPost(`select act_Name,act_id from act where act_Status='报名中'`, true);
+    const json = await doPost('select act_Name,act_id from act where act_Status=\'报名中\'', true);
     try {
       if (json.error) {
         // TODO
@@ -47,7 +47,7 @@ class Act extends Component {
             <Card.Body>
               <ScrollView>
                 <ListView
-                  renderHeader={() => (<Text>所有活动</Text>)}
+                  renderHeader={() => (<Text style={Style.blankBorder}>所有活动</Text>)}
                   dataSource={this.state.dataSource}
                   renderRow={rowData => (
                     <Flex>
@@ -55,13 +55,13 @@ class Act extends Component {
                         <TouchableHighlight
                           onPress={() => this.props.history.push(`/actinfo/${rowData[1]}`)}
                           underlayColor='#3366ff'>
-                          <Text>{rowData[0]}</Text>
+                          <Text style={Style.belowBorder}>{rowData[0]}</Text>
                         </TouchableHighlight>
                       </Flex.Item>
                     </Flex>
                   )} />
                 <ListView
-                  renderHeader={() => (<Text>我的活动</Text>)}
+                  renderHeader={() => (<Text style={Style.blankBorder}>我的活动</Text>)}
                   dataSource={this.state.dataSource}
                   renderRow={rowData => (
                     <Flex>
@@ -69,7 +69,7 @@ class Act extends Component {
                         <TouchableHighlight
                           onPress={() => this.props.history.push(`/actinfo/${rowData[1]}`)}
                           underlayColor='#3366ff'>
-                          <Text>{rowData[0]}</Text>
+                          <Text style={Style.belowBorder}>{rowData[0]}</Text>
                         </TouchableHighlight>
                       </Flex.Item>
                     </Flex>

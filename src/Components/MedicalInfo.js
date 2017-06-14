@@ -17,11 +17,11 @@ import { doPost } from '../Utils';
 import Style from '../Styles';
 
 class MedicalInfo extends Component {
-  constructor(props){
+  constructor(props) {
     super(props);
     this.state = {
       userId: ''
-    }
+    };
   }
   render() {
     return (
@@ -40,7 +40,7 @@ class MedicalInfo extends Component {
               <Text>血糖</Text>
               <Text>{this.state.service_Price}</Text>
               <Text>心率</Text>
-              <Text></Text>
+              <Text />
             </Card.Body>
           </Card>
         </Flex.Item>

@@ -1,15 +1,15 @@
 /**
         Author: TanDV7 - tandv7@outlook.com
-        Last modified: 2017-05-31 15:45:41
+        Last modified: 2017-06-14 19:41:36
         Filename: UserInfo.js
         Description: Created by TanDV7 using vim automatically.
 **/
 import React, { Component } from 'react';
 import {
-  View, Text
+  Text, ScrollView
 } from 'react-native';
 import { observer } from 'mobx-react';
-import { Modal, Flex, Card, Button, InputItem } from 'antd-mobile';
+import { Flex, Card, Button } from 'antd-mobile';
 
 import Model from '../Model';
 import { doPost } from '../Utils';
@@ -38,7 +38,7 @@ class UserInfo extends Component {
         userName: json.user_name,
         userAge: json.user_Age,
         userSex: json.user_Gender,
-        userIdNumber:json.user_Id_Numbe,
+        userIdNumber: json.user_Id_Numbe,
         userPhone: json.user_Phone,
         userPassword: json.user_password
       });
@@ -53,30 +53,34 @@ class UserInfo extends Component {
           <Card>
             <Card.Header title='居家养老平台' />
             <Card.Body>
-              <Text>用户信息</Text>
-              <Text>账号</Text>
-              <Text>{Model.state.userId}</Text>
-              <Text>用户名</Text>
-              <Text>{this.state.userName}</Text>
-              <Text>年龄</Text>
-              <Text>{this.state.userAge}</Text>
-              <Text>性别</Text>
-              <Text>{this.state.userSex}</Text>
-              <Text>手机</Text>
-              <Text>{this.state.userPhone}</Text>
-              <Text>身份证号</Text>
-              <Text>{this.state.userIdNumber}</Text>
-              <Button
-                type='primary'
-                onClick={ev => this.props.history.push(`/edituserinfo/${this.state.userPassword}`)}>编辑</Button>
-              <Button
-                type='primary'
-                onClick={() => {
-                  Model.setState({
-                    userId: ''
-                  });
-                  this.props.history.replace('/');
-                }}>注销</Button>
+              <ScrollView>
+                <Text style={Style.blankBorder}>用户信息</Text>
+                <Text style={Style.blankBorder}>账号</Text>
+                <Text style={Style.belowBorder}>{Model.state.userId}</Text>
+                <Text style={Style.blankBorder}>用户名</Text>
+                <Text style={Style.belowBorder}>{this.state.userName}</Text>
+                <Text style={Style.blankBorder}>年龄</Text>
+                <Text style={Style.belowBorder}>{this.state.userAge}</Text>
+                <Text style={Style.blankBorder}>性别</Text>
+                <Text style={Style.belowBorder}>{this.state.userSex}</Text>
+                <Text style={Style.blankBorder}>手机</Text>
+                <Text style={Style.belowBorder}>{this.state.userPhone}</Text>
+                <Text style={Style.blankBorder}>身份证号</Text>
+                <Text style={Style.belowBorder}>{this.state.userIdNumber}</Text>
+                <Button
+                  style={Style.blankBorder}
+                  type='primary'
+                  onClick={ev => this.props.history.push(`/edituserinfo/${this.state.userPassword}`)}>编辑</Button>
+                <Button
+                  style={Style.blankBorder}
+                  type='primary'
+                  onClick={() => {
+                    Model.setState({
+                      userId: ''
+                    });
+                    this.props.history.replace('/');
+                  }}>注销</Button>
+              </ScrollView>
             </Card.Body>
           </Card>
         </Flex.Item>
