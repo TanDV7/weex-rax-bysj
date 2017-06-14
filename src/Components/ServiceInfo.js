@@ -31,7 +31,7 @@ import Style from '../Styles';
   }
   async doOrderService() {
     try {
-      const json = await doPost(`updaet user_service`);
+      const json = await doPost('updaet user_service');
       // TODO
     } catch (e) {
       // TODO
