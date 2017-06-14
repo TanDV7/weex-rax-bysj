@@ -1,6 +1,6 @@
 /**
         Author: TanDV7 - tandv7@outlook.com
-        Last modified: 2017-06-14 19:41:36
+        Last modified: 2017-06-14 21:34:22
         Filename: UserInfo.js
         Description: Created by TanDV7 using vim automatically.
 **/

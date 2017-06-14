@@ -1,6 +1,6 @@
 /**
         Author: TanDV7 - tandv7@outlook.com
-        Last modified: 2017-06-14 19:14:45
+        Last modified: 2017-06-14 20:52:51
         Filename: App.js
         Description: Created by TanDV7 using vim automatically.
 **/
@@ -19,6 +19,7 @@ import Act from '../Components/Act';
 import BackWrapper from '../Components/BackWrapper';
 import ActInfo from '../Components/ActInfo';
 import MyService from '../Components/MyService';
+import ServiceInfo from '../Components/ServiceInfo';
 import MyAct from '../Components/MyAct';
 import News from '../Components/News';
 
@@ -37,8 +38,9 @@ function App() {
         <Route exact path='/edituserinfo/:password' component={EditUserInfo} />
         <Route exact path='/actinfo/:name' component={ActInfo} />
         <Route exact path='/myservice/:name' component={MyService} />
+        <Route exact path='/serviceinfo/:name' component={ServiceInfo} />
         <Route exact path='/myact' component={MyAct} />
-        <Route exact path='news' component={News} />
+        <Route exact path='/news' component={News} />
       </View>
     </NativeRouter>
   );

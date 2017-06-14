@@ -1,6 +1,6 @@
 /**
         Author: TanDV7 - tandv7@outlook.com
-        Last modified: 2017-06-14 19:55:56
+        Last modified: 2017-06-14 21:35:54
         Filename: index.js
         Description: Created by TanDV7 using vim automatically.
 **/
@@ -32,6 +32,7 @@ export default StyleSheet.create({
     margin: 10,
     marginLeft: 20,
     color: '#666',
+    borderColor: '#ccc',
     borderBottomWidth: 1
   },
   navBar: {

@@ -1,16 +1,16 @@
 /**
         Author: TanDV7 - tandv7@outlook.com
-        Last modified: 2017-06-14 19:30:31
+        Last modified: 2017-06-14 21:13:27
         Filename: Service.js
         Description: Created by TanDV7 using vim automatically.
 **/
 
 import React, { Component } from 'react';
 import {
-  ScrollView, Image, Text, ListView, TouchableHighlight, View
+  ScrollView, Image, Text, ListView, TouchableHighlight
 } from 'react-native';
 // import { observer } from 'mobx-react';
-import { Flex, Card, Button } from 'antd-mobile';
+import { Flex, Card } from 'antd-mobile';
 
 import Model from '../Model';
 import { doPost } from '../Utils';
@@ -26,7 +26,7 @@ class Service extends Component {
     };
   }
   async componentDidMount() {
-    let json = await doPost('select * from service', true);
+    let json = await doPost('select * from service where service_condition="可预约"', true);
     const service = json;
     try {
       if (json.error) {
@@ -49,6 +49,7 @@ class Service extends Component {
             return service[i];
           }
         }
+        return {};
       });
       this.setState({
         myDataSource: this.ds.cloneWithRows(json)
