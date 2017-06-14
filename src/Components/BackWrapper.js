@@ -14,8 +14,13 @@ let isSet = false;
 let lastBack = 0;
 
 const barTitle = {
-  '/main': '主界面'
+  '/main': '主界面',
+  '/login': '登录',
+  '/service': '服务列表',
+  '/act': '活动内容',
+  '/actinfo': '活动详情'
 };
+
 
 export default class BackWrapper extends Component {
   componentDidMount() {
@@ -43,7 +48,7 @@ export default class BackWrapper extends Component {
           </TouchableHighlight>
         </Flex.Item>
         <Flex.Item>
-          <Text style={Style.navBarTitle}>{barTitle[this.props.location.pathname]}</Text>
+          <Text style={Style.navBarTitle}>{barTitle[this.props.location.pathname] || '居家养老平台APP'}</Text>
         </Flex.Item>
         <Flex.Item style={Style.navBarBack}>
           <View />

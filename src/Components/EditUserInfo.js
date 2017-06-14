@@ -21,6 +21,9 @@ class EditUserInfo extends Component {
     super(props);
     this.state = {
       userName: '',
+      userAge: '',
+      userPhone: '',
+      userIdNumber: '',
       oldPassword: '',
       newPassword: '',
       userSex: '男'
@@ -28,16 +31,23 @@ class EditUserInfo extends Component {
   }
   async doUpdateUserInfo(ev) {
     try {
-      const json = await doPost(`select user_password from users where user_Id=${Model.state.userId}`);
-      if (json.user_password == this.state.password) {
-        if (this.state.newPassword === null) {
-
-        }
+      if(this.props.match.params.password !== this.state.oldPassword) {
+        Modal.alert('消息', '请输入正确的原密码');
       } else {
-        Modal.alert('Error', '请输入正确的原密码');
+        if(this.state.newPassword === '') {
+          let json = await doPost(`update users set user_name='${this.state.userName}',user_Age='${this.state.userAge}',user_Gender='${this.state.userSex}',user_Phone='${this.state.userPhone}',user_Id_Number='${this.state.userIdNumber}' where user_Id='${Model.state.userId}'`);
+          Modal.alert('消息', '修改成功', [
+            { text: '确定', onPress: () => this.props.history.replace('/userinfo') }
+          ]);
+        } else {
+          let json = await doPost(`update users set user_name='${this.state.userName}',user_Age='${this.state.userAge}',user_Gender='${this.state.userSex}',user_Phone='${this.state.userPhone}',user_Id_Number='${this.state.userIdNumber}',user_password='${this.state.newPassword}' where user_Id='${Model.state.userId}'`);
+          Modal.alert('消息', '修改成功', [
+            { text: '确定', onPress: () => this.props.history.replace('/userinfo') }
+          ]);
+        }
       }
-    } catch (err) {
-      Modal.alert('Error', err.toString());
+    } catch (e) {
+
     }
   }
   render() {
@@ -49,8 +59,12 @@ class EditUserInfo extends Component {
             <Card.Body>
               <InputItem
                 value={this.state.userName}
+                onChange={txt => this.setState({ userName: txt})}
                 placeholder='请输入姓名'>用户名</InputItem>
               <InputItem
+                maxLength={3}
+                value={this.state.userAge}
+                onChange={txt => this.setState({ userAge: txt})}
                 type='number'
                 placeholder='请输入年龄'>年龄</InputItem>
               <Flex>
@@ -69,17 +83,29 @@ class EditUserInfo extends Component {
                 </Flex.Item>
               </Flex>
               <InputItem
+                maxLength={13}
+                value={this.state.userPhone}
+                onChange={txt => this.setState({ userPhone: txt})}
                 type='phone'
                 placeholder='请输入手机'>手机</InputItem>
               <InputItem
+                maxLength={18}
+                value={this.state.userIdNumber}
+                onChange={txt => this.setState({ userIdNumber: txt})}
+                type='number'
+                placeholder='请输入身份证号'>身份证号</InputItem>
+              <InputItem
                 type='password'
+                onChange={txt => this.setState({ oldPassword: txt})}
                 value={this.state.oldPassword}
                 placeholder='请输入正确的原密码'>原密码</InputItem>
               <InputItem
                 type='password'
+                onChange={txt => this.setState({ newPassword: txt})}
                 value={this.state.newPassword}
                 placeholder='请输入新密码(可以为空)'>新密码</InputItem>
               <Button
+                onClick={ev => this.doUpdateUserInfo()}
                 type='primary'>确认</Button>
             </Card.Body>
           </Card>

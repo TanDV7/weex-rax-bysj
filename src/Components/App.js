@@ -18,6 +18,9 @@ import Service from '../Components/Service';
 import Act from '../Components/Act';
 import BackWrapper from '../Components/BackWrapper';
 import ActInfo from '../Components/ActInfo';
+import MyService from '../Components/MyService';
+import MyAct from '../Components/MyAct';
+import News from '../Components/News';
 
 function App() {
   return (
@@ -31,8 +34,11 @@ function App() {
         <Route exact path='/act' component={Act} />
         <Route exact path='/register' component={Register} />
         <Route exact path='/userinfo' component={UserInfo} />
-        <Route exact path='/edituserinfo' component={EditUserInfo} />
+        <Route exact path='/edituserinfo/:password' component={EditUserInfo} />
         <Route exact path='/actinfo/:name' component={ActInfo} />
+        <Route exact path='/myservice/:name' component={MyService} />
+        <Route exact path='/myact/' component={MyAct}/>
+        <Route exact path='news' component={News}/>
       </View>
     </NativeRouter>
   );

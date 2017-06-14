@@ -26,7 +26,7 @@ class Act extends Component {
     };
   }
   async componentDidMount() {
-    const json = await doPost('select act_Name,act_id from act', true);
+    const json = await doPost(`select act_Name,act_id from act where act_Status='报名中'`, true);
     try {
       if (json.error) {
         // TODO
@@ -45,9 +45,23 @@ class Act extends Component {
           <Card>
             <Card.Header title='居家养老平台' />
             <Card.Body>
-              <Text>活动列表</Text>
               <ScrollView>
                 <ListView
+                  renderHeader={() => (<Text>所有活动</Text>)}
+                  dataSource={this.state.dataSource}
+                  renderRow={rowData => (
+                    <Flex>
+                      <Flex.Item>
+                        <TouchableHighlight
+                          onPress={() => this.props.history.push(`/actinfo/${rowData[1]}`)}
+                          underlayColor='#3366ff'>
+                          <Text>{rowData[0]}</Text>
+                        </TouchableHighlight>
+                      </Flex.Item>
+                    </Flex>
+                  )} />
+                <ListView
+                  renderHeader={() => (<Text>我的活动</Text>)}
                   dataSource={this.state.dataSource}
                   renderRow={rowData => (
                     <Flex>

@@ -37,7 +37,8 @@ class UserInfo extends Component {
       this.setState({
         userName: json.user_name,
         userAge: json.user_Age,
-        userSex: (json.user_Gender === 'male') ? '男' : '女',
+        userSex: json.user_Gender,
+        userIdNumber:json.user_Id_Numbe,
         userPhone: json.user_Phone,
         userPassword: json.user_password
       });
@@ -63,9 +64,11 @@ class UserInfo extends Component {
               <Text>{this.state.userSex}</Text>
               <Text>手机</Text>
               <Text>{this.state.userPhone}</Text>
+              <Text>身份证号</Text>
+              <Text>{this.state.userIdNumber}</Text>
               <Button
                 type='primary'
-                onClick={ev => this.props.history.push('/edituserinfo')}>编辑</Button>
+                onClick={ev => this.props.history.push(`/edituserinfo/${this.state.userPassword}`)}>编辑</Button>
               <Button
                 type='primary'
                 onClick={() => {

@@ -39,7 +39,6 @@ class Login extends Component {
     } else {
       try {
         const json = await doPost(`select user_password from users where user_Id='${this.state.userId}'`);
-        console.log(json);
         if (json.user_password === this.state.password) {
           Model.setState({ userId: this.state.userId });
           Modal.alert('消息', '登录成功', [

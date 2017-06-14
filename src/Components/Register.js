@@ -10,6 +10,8 @@ import { Modal, Flex, Card, Button, InputItem } from 'antd-mobile';
 import Style from '../Styles';
 import { doPost } from '../Utils';
 
+import Model from '../Model';
+
 class Register extends Component {
   constructor(props) {
     super(props);
@@ -34,8 +36,14 @@ class Register extends Component {
         if (json.errno) {
           Modal.alert('Error', '用户已存在');
         } else {
-          Modal.alert('Info', '注册并登录成功');
-          this.props.history.push('/main');
+          Model.setState({ userId: this.state.userId });
+          console.log(Model.state, this.state);
+          Modal.alert('Info', '注册并登录成功', [{
+            text: '确定',
+            onPress: () => {
+              this.props.history.replace('/main');
+            }
+          }]);
         }
       } catch (err) {
         // TODO: 错误处理

@@ -43,8 +43,6 @@ class Service extends Component {
       if (json.error) {
         // TODO
       }
-      console.log(service);
-      console.log(json);
       json = json.map((s) => {
         for (let i = 0; i < service.length; ++i) {
           if (service[i][0] === s[0]) {
@@ -52,7 +50,6 @@ class Service extends Component {
           }
         }
       });
-      console.log(json);
       this.setState({
         myDataSource: this.ds.cloneWithRows(json)
       });
@@ -68,36 +65,6 @@ class Service extends Component {
             <Card.Header title='居家养老平台' />
             <Card.Body>
               <ScrollView>
-                <ListView
-                  renderHeader={() => (<Text>我的服务</Text>)}
-                  dataSource={this.state.myDataSource}
-                  renderRow={rowData => (
-                    <Flex>
-                      <Flex.Item>
-                        <TouchableHighlight
-                          onPress={() => {}}
-                          underlayColor='#ffffff'>
-                          <Image
-                            style={{ width: 40, height: 40 }}
-                            source={{ uri: `http://123.206.211.92/${rowData[2]}` }} />
-                        </TouchableHighlight>
-                      </Flex.Item>
-                      <Flex.Item>
-                        <TouchableHighlight
-                          onPress={() => {}}
-                          underlayColor='#ffffff'>
-                          <Text>{rowData[1]}</Text>
-                        </TouchableHighlight>
-                      </Flex.Item>
-                      <Flex.Item>
-                        <TouchableHighlight
-                          onPress={() => {}}
-                          underlayColor='#ffffff'>
-                          <Text>{rowData[4]}</Text>
-                        </TouchableHighlight>
-                      </Flex.Item>
-                    </Flex>
-                  )} />
                 <ListView
                   renderHeader={() => (<Text>所有服务</Text>)}
                   dataSource={this.state.dataSource}
@@ -122,6 +89,36 @@ class Service extends Component {
                       <Flex.Item>
                         <TouchableHighlight
                           onPress={() => this.props.history.push(`/serviceinfo/${rowData[0]}`)}
+                          underlayColor='#ffffff'>
+                          <Text>{rowData[4]}</Text>
+                        </TouchableHighlight>
+                      </Flex.Item>
+                    </Flex>
+                  )} />
+                <ListView
+                  renderHeader={() => (<Text>我的服务</Text>)}
+                  dataSource={this.state.myDataSource}
+                  renderRow={rowData => (
+                    <Flex>
+                      <Flex.Item>
+                        <TouchableHighlight
+                          onPress={() => this.props.history.push(`/myserviceinfo/${rowData[0]}`)}
+                          underlayColor='#ffffff'>
+                          <Image
+                            style={{ width: 40, height: 40 }}
+                            source={{ uri: `http://123.206.211.92/${rowData[2]}` }} />
+                        </TouchableHighlight>
+                      </Flex.Item>
+                      <Flex.Item>
+                        <TouchableHighlight
+                          onPress={() => this.props.history.push(`/myserviceinfo/${rowData[0]}`)}
+                          underlayColor='#ffffff'>
+                          <Text>{rowData[1]}</Text>
+                        </TouchableHighlight>
+                      </Flex.Item>
+                      <Flex.Item>
+                        <TouchableHighlight
+                          onPress={() => this.props.history.push(`/myserviceinfo/${rowData[0]}`)}
                           underlayColor='#ffffff'>
                           <Text>{rowData[4]}</Text>
                         </TouchableHighlight>
