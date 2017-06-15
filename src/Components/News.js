@@ -78,6 +78,7 @@ import Style from '../Styles';
             <Card.Body>
               <ScrollView>
                 <ListView
+                  enableEmptySections
                   renderHeader={() => (<Text style={Style.blankBorder}>新闻订阅详情</Text>)}
                   dataSource={this.state.dataSource}
                   renderRow={rowData => (

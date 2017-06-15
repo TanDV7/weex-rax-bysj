@@ -38,7 +38,7 @@ class Service extends Component {
     } catch (e) {
       // TODO
     }
-    json = await doPost(`select service_id from user_service where user_id='${Model.state.userId}'`, true);
+    json = await doPost(`select service_id from user_service where user_id='${Model.state.userId}' and (service_condition='已预约' or service_condition='已派单')`, true);
     try {
       if (json.error) {
         // TODO
@@ -67,6 +67,7 @@ class Service extends Component {
             <Card.Body style={Style.blankPadding}>
               <ScrollView>
                 <ListView
+                  enableEmptySections
                   renderHeader={() => (<Text>所有服务</Text>)}
                   dataSource={this.state.dataSource}
                   renderRow={rowData => (
@@ -97,13 +98,14 @@ class Service extends Component {
                     </Flex>
                   )} />
                 <ListView
+                  enableEmptySections
                   renderHeader={() => (<Text>我的服务</Text>)}
                   dataSource={this.state.myDataSource}
                   renderRow={rowData => (
                     <Flex style={Style.blankBorder}>
                       <Flex.Item style={Style.grow4}>
                         <TouchableHighlight
-                          onPress={() => this.props.history.push(`/myserviceinfo/${rowData[0]}`)}
+                          onPress={() => this.props.history.push(`/myservice/${rowData[0]}`)}
                           underlayColor='#ffffff'>
                           <Image
                             style={{ width: 32, height: 32 }}

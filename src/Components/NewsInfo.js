@@ -5,7 +5,7 @@
         Description: Created by SpringHack using vim automatically.
 **/
 import React from 'react';
-import { WebView } from 'react-native';
+import { WebView, ScrollView } from 'react-native';
 import { Flex, Card } from 'antd-mobile';
 
 import Style from '../Styles';
@@ -42,15 +42,17 @@ class Main extends React.Component {
             <Card.Header title={this.state.title} />
             <Card.Body
               style={[Style.blankBorder, {
-                height: 1000
+
               }]}>
-              <WebView
-                style={{
-                  height: 1000
-                }}
-                source={{
-                  uri: `http://123.206.211.92/nnnn.php?id=${this.props.match.params.id}`
-                }} />
+              <ScrollView>
+                <WebView
+                  style={{
+                    height: 1000
+                  }}
+                  source={{
+                    uri: `http://123.206.211.92/nnnn.php?id=${this.props.match.params.id}`
+                  }}></WebView>
+              </ScrollView>
             </Card.Body>
           </Card>
         </Flex.Item>

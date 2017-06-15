@@ -7,13 +7,13 @@
 
 import React, { Component } from 'react';
 import {
-  Text, Image
+  Text, Image, DatePickerAndroid
 } from 'react-native';
 import { observer } from 'mobx-react';
-import { Button, Flex, Card } from 'antd-mobile';
+import { Button, Flex, Card, InputItem, Modal } from 'antd-mobile';
 
-// import Model from '../Model';
-import { doPost } from '../Utils';
+import Model from '../Model';
+import { setDig, doPost, getNowTime } from '../Utils';
 import Style from '../Styles';
 
 @observer class ServiceInfo extends Component {
@@ -24,20 +24,45 @@ import Style from '../Styles';
   async componentDidMount() {
     try {
       const json = await doPost(`select * from service where service_id='${this.props.match.params.name}'`);
-      this.setState(json);
+      this.setState({
+        service_id: json[0][0],
+        pic: json[0][2],
+        title: json[0][1],
+        service_Phone: json[0][3],
+        service_Type: json[0][4],
+        service_Price: json[0][5],
+        service_yuyue: ''
+      });
     } catch (e) {
-      // TODO
+
     }
   }
   async doOrderService() {
     try {
-      const json = await doPost('updaet user_service');
-      // TODO
+      const json = await doPost(`insert into user_service values('${Model.state.userId}','${this.state.service_id}','${this.state.service_Type}','${this.state.service_Price}','已预约','${getNowTime()}','${this.state.service_yuyue}','')`,true);
+      Modal.alert('消息', '预约成功', [
+        { text: '确定', onPress: () => this.props.history.replace('/service') }
+      ]);
     } catch (e) {
-      // TODO
+
+    }
+  }
+  async chooseDate() {
+    try {
+      const {action, year, month, day} = await DatePickerAndroid.open({
+        date: new Date()
+      });
+      if (action !== DatePickerAndroid.dismissedAction) {
+        this.setState({
+          service_yuyue: `${year}${setDig(month)}${setDig(day)}`
+        })
+      }
+    } catch ({ code, message }) {
+      console.warn('Cannot open date picker', message);
     }
   }
   render() {
+    const price = `${this.state.service_Price}元`;
     return (
       <Flex style={Style.blankBorder}>
         <Flex.Item >
@@ -55,7 +80,13 @@ import Style from '../Styles';
               <Text style={Style.blankBorder}>服务类型</Text>
               <Text style={Style.belowBorder}>{this.state.service_Type}</Text>
               <Text style={Style.blankBorder}>服务价格</Text>
-              <Text style={Style.belowBorder}>{this.state.service_Price}</Text>
+              <Text style={Style.belowBorder}>{price}</Text>
+              <InputItem
+                type='number'
+                editable={false}
+                value={this.state.service_yuyue}
+                onChange={txt => this.setState({ service_yuyue: txt})}
+                placeholder='请选择预约日期'><Button onClick={() => this.chooseDate()}>日期</Button></InputItem>
               <Button
                 type='primary' style={Style.blankBorder}
                 onClick={ev => this.doOrderService()}>预约</Button>

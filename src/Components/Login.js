@@ -1,6 +1,6 @@
 /**
         Author: TanDV7 - tandv7@outlook.com
-        Last modified: 2017-06-14 19:16:39
+        Last modified: 2017-06-14 23:24:38
         Filename: Login.js
         Description: Created by TanDV7 using vim automatically.
 **/
@@ -39,7 +39,7 @@ class Login extends Component {
     } else {
       try {
         const json = await doPost(`select user_password from users where user_Id='${this.state.userId}'`);
-        if (json.user_password === this.state.password) {
+        if (json[0][0] === this.state.password) {
           Model.setState({ userId: this.state.userId });
           Modal.alert('消息', '登录成功', [
             { text: '确定', onPress: () => this.props.history.replace('/main') }

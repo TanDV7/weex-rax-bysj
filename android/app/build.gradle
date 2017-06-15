@@ -99,9 +99,9 @@ android {
     signingConfigs {
         release {
             storeFile file("../ReleassKey.keystore")
-            storePassword "ReleaseKey"
-            keyAlias "ReleaseKey"
-            keyPassword "ReleaseKey"
+            storePassword "123456"
+            keyAlias "android.keystore"
+            keyPassword "123456"
         }
     }
     splits {

@@ -29,7 +29,13 @@ class ActInfo extends Component {
       if (json.error) {
         // TODO
       }
-      this.setState(json);
+      this.setState({
+        act_Name: json[0][1],
+        act_Address: json[0][2],
+        act_Time: json[0][3],
+        act_number: json[0][4],
+        act_Status: json[0][5]
+      });
     } catch (e) {
       // TODO
     }
@@ -64,6 +70,7 @@ class ActInfo extends Component {
               <Text style={Style.blankBorder}>活动状态</Text>
               <Text style={Style.belowBorder}>{this.state.act_Status}</Text>
               <Button
+                type='primary' style={Style.blankBorder}
                 onClick={ev => this.doJoinAct()}>参加</Button>
             </Card.Body>
           </Card>

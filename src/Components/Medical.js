@@ -47,13 +47,14 @@ class Medical extends Component {
             <Card.Body>
               <ScrollView>
                 <ListView
+                  enableEmptySections
                   renderHeader={() => (<Text style={Style.blankBorder}>所有档案</Text>)}
                   dataSource={this.state.dataSource}
                   renderRow={rowData => (
                     <Flex>
                       <Flex.Item>
                         <TouchableHighlight
-                          onPress={() => this.props.history.push}
+                          onPress={() => this.props.history.push(`/medicalinfo/${rowData[0]}`)}
                           underlayColor='#3366ff'>
                           <Text style={Style.belowBorder}>{rowData[0]}</Text>
                         </TouchableHighlight>
@@ -61,7 +62,9 @@ class Medical extends Component {
                     </Flex>
                   )} />
               </ScrollView>
-              <Button type='primary' style={Style.blankBorder}>新建档案</Button>
+              <Button
+                onClick={ev => this.props.history.push('/newmedical')}
+                type='primary' style={Style.blankBorder}>新建档案</Button>
             </Card.Body>
           </Card>
         </Flex.Item>

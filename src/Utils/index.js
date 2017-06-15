@@ -40,6 +40,21 @@ async function doPost(sql, all = false) {
   .then(res => res.json());
 }
 
+async function _doPost(sql) {
+  const net = await networkIsOK();
+  if (!net) {
+    Modal.alert('警告', '当前没有网络,数据来自缓存!');
+    return { nonet: true };
+  }
+  return fetch('http://123.206.211.92/sqlNew.php', {
+    method: 'post',
+    headers: { 'Content-type': 'application/x-www-form-urlencoded; charset=UTF-8' },
+    mode: 'cors',
+    body: `sql=${encodeURIComponent(sql)}`
+  })
+    .then(res => res.json());
+}
+
 function setDig(num) {
   if (num < 10) {
     return `0${num}`;
@@ -57,4 +72,4 @@ function getNowTime() {
   return `${year}${setDig(month)}${setDig(day)}${setDig(hour)}${setDig(minute)}`;
 }
 
-export { desc, doPost, getNowTime };
+export { setDig, desc, doPost, getNowTime, _doPost };

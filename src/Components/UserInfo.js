@@ -33,14 +33,14 @@ class UserInfo extends Component {
   async doSelectUserInfo() {
     const selectUserInfo = `select * from users where user_Id='${Model.state.userId}'`;
     try {
-      const json = await doPost(selectUserInfo);
+      const json = await doPost(selectUserInfo, true);
       this.setState({
-        userName: json.user_name,
-        userAge: json.user_Age,
-        userSex: json.user_Gender,
-        userIdNumber: json.user_Id_Numbe,
-        userPhone: json.user_Phone,
-        userPassword: json.user_password
+        userName: json[0][2],
+        userAge: json[0][3],
+        userSex: json[0][4],
+        userIdNumber: json[0][6],
+        userPhone: json[0][5],
+        userPassword: json[0][1]
       });
     } catch (err) {
       // TODO: 错误处理

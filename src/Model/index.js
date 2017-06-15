@@ -13,7 +13,8 @@ class Model {
 
   @observable
   state = {
-    userId: ''
+    userId: '',
+    med_name: ''
   };
 
   constructor() {
